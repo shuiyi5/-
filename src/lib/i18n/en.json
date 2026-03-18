@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "blog": "Blog",
+    "projects": "Projects",
+    "about": "About"
+  },
+  "home": {
+    "greeting": "Hi, I'm Sentoe 👋",
+    "tagline": "Exploring the frontier of AI products, documenting thoughts from zero to one.",
+    "latestPosts": "Latest Posts",
+    "viewAll": "View All",
+    "featuredProjects": "Featured Projects"
+  },
+  "blog": {
+    "title": "Blog",
+    "all": "All",
+    "readMore": "Read more",
+    "minRead": "min read",
+    "noTranslation": "This article is not available in Chinese yet",
+    "readInOther": "阅读中文版",
+    "prev": "Previous",
+    "next": "Next",
+    "toc": "Table of Contents"
+  },
+  "projects": {
+    "title": "Projects",
+    "role": "Role",
+    "demo": "Demo",
+    "source": "Source"
+  },
+  "about": {
+    "title": "About Me",
+    "education": "Education",
+    "skills": "Skills",
+    "productSkills": "Product Skills",
+    "techSkills": "Technical Skills",
+    "experience": "Experience",
+    "vision": "Career Vision",
+    "contact": "Contact Me",
+    "contactCta": "Want to chat?"
+  },
+  "footer": {
+    "poweredBy": "Powered by Next.js & Notion",
+    "copyright": "© 2026 Sentoe"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "language": {
+    "switch": "中",
+    "current": "EN"
+  }
+}
