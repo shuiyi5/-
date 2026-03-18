@@ -6,6 +6,9 @@ import { Footer } from "@/components/layout/Footer";
 import { umamiConfig } from "@/lib/constants";
 import type { Locale } from "@/lib/data/types";
 
+/** ISR: re-fetch Notion data every 60 seconds */
+export const revalidate = 60;
+
 export function generateStaticParams() {
   return [{ locale: "zh" }, { locale: "en" }];
 }
