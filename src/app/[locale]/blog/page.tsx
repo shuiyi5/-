@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { isValidLocale } from "@/lib/utils";
@@ -54,11 +55,13 @@ export default async function BlogPage({
   return (
     <div className="max-w-5xl mx-auto px-6 py-16">
       <h1 className="text-3xl font-bold mb-8">{dict.blog.title}</h1>
-      <CategoryFilter
-        categories={categories}
-        allLabel={dict.blog.all}
-        locale={locale}
-      />
+      <Suspense fallback={null}>
+        <CategoryFilter
+          categories={categories}
+          allLabel={dict.blog.all}
+          locale={locale}
+        />
+      </Suspense>
       <PostList
         posts={filteredPosts}
         locale={locale as Locale}

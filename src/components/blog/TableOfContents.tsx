@@ -41,17 +41,28 @@ function useActiveHeading(items: TocItem[]) {
 interface TocNavProps {
   items: TocItem[];
   activeId: string;
-  onClickItem?: () => void;
+  onAfterClick?: () => void;
 }
 
-function TocNav({ items, activeId, onClickItem }: TocNavProps) {
+function TocNav({ items, activeId, onAfterClick }: TocNavProps) {
+  function handleClick(e: React.MouseEvent, id: string) {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top, behavior: "smooth" });
+      window.history.pushState(null, "", `#${id}`);
+    }
+    onAfterClick?.();
+  }
+
   return (
     <nav className="border-l border-[var(--border)]">
       {items.map((item) => (
         <a
           key={item.id}
           href={`#${item.id}`}
-          onClick={onClickItem}
+          onClick={(e) => handleClick(e, item.id)}
           className={cn(
             "block py-1 pl-3 text-sm transition-colors border-l -ml-px",
             item.level === 3 && "pl-6",
@@ -67,7 +78,6 @@ function TocNav({ items, activeId, onClickItem }: TocNavProps) {
   );
 }
 
-// Desktop sidebar TOC — only rendered on lg+
 export function DesktopTOC({
   items,
   tocLabel,
@@ -76,7 +86,6 @@ export function DesktopTOC({
   tocLabel: string;
 }) {
   const activeId = useActiveHeading(items);
-
   if (items.length === 0) return null;
 
   return (
@@ -89,7 +98,6 @@ export function DesktopTOC({
   );
 }
 
-// Mobile collapsible TOC — only rendered below lg
 export function MobileTOC({
   items,
   tocLabel,
@@ -99,7 +107,6 @@ export function MobileTOC({
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const activeId = useActiveHeading(items);
-
   const close = useCallback(() => setIsOpen(false), []);
 
   if (items.length === 0) return null;
@@ -115,7 +122,7 @@ export function MobileTOC({
       </button>
       {isOpen && (
         <div className="mt-3">
-          <TocNav items={items} activeId={activeId} onClickItem={close} />
+          <TocNav items={items} activeId={activeId} onAfterClick={close} />
         </div>
       )}
     </div>
