@@ -2,6 +2,7 @@
   "nav": {
     "blog": "博客",
     "projects": "项目",
+    "gallery": "作品集",
     "about": "关于"
   },
   "home": {
@@ -38,6 +39,10 @@
     "vision": "职业愿景",
     "contact": "联系我",
     "contactCta": "想和我聊聊？"
+  },
+  "gallery": {
+    "title": "作品集",
+    "subtitle": "图片、音乐、视频等创作展示"
   },
   "footer": {
     "poweredBy": "Powered by Next.js & Notion",

@@ -2,6 +2,7 @@
   "nav": {
     "blog": "Blog",
     "projects": "Projects",
+    "gallery": "Gallery",
     "about": "About"
   },
   "home": {
@@ -38,6 +39,10 @@
     "vision": "Career Vision",
     "contact": "Contact Me",
     "contactCta": "Want to chat?"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "subtitle": "Creative works including images, music, and videos"
   },
   "footer": {
     "poweredBy": "Powered by Next.js & Notion",

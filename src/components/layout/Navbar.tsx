@@ -15,6 +15,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
   const navLinks = [
     { href: `/${locale}/blog`, label: dict.nav.blog },
     { href: `/${locale}/projects`, label: dict.nav.projects },
+    { href: `/${locale}/gallery`, label: dict.nav.gallery },
     { href: `/${locale}/about`, label: dict.nav.about },
   ];
 

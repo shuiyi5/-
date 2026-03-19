@@ -35,6 +35,21 @@ export interface Project {
   order: number;
 }
 
+export type GalleryItemType = "Image" | "Music" | "Video" | "Design";
+
+export interface GalleryItem {
+  id: string;
+  name: string;
+  type: GalleryItemType;
+  description: string;
+  language: Locale;
+  tags: string[];
+  cover?: string;      // Thumbnail (< 5MB, stored in Notion)
+  mediaUrl?: string;    // Full-size file on external host
+  embedUrl?: string;    // Embed link (NetEase/SoundCloud/Bilibili/YouTube)
+  order: number;
+}
+
 // Content block types matching Notion block structure
 export type ContentBlock =
   | HeadingBlock
