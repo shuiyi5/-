@@ -98,30 +98,23 @@ function LightboxContent({ item, onClose }: LightboxProps) {
         <div
           style={{
             flex: 1,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            position: "relative",
             background: "#000",
-            padding: 32,
             minWidth: 0,
           }}
         >
           {fullSrc && !imgError ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
+            <Image
               src={fullSrc}
               alt={item.name}
-              style={{
-                maxWidth: "100%",
-                maxHeight: "100%",
-                objectFit: "contain",
-                userSelect: "none",
-              }}
-              draggable={false}
+              fill
+              className="object-contain p-6"
+              sizes="(max-width: 1024px) 100vw, calc(100vw - 420px)"
+              priority
               onError={() => setImgError(true)}
             />
           ) : (
-            <div style={{ color: "rgba(255,255,255,0.2)", fontSize: 14 }}>
+            <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", color: "rgba(255,255,255,0.2)", fontSize: 14 }}>
               {item.language === "zh" ? "图片加载失败" : "Image failed to load"}
             </div>
           )}
