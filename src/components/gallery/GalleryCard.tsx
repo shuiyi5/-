@@ -33,12 +33,13 @@ export function GalleryCard({ item }: { item: GalleryItem }) {
               src={item.cover}
               alt={item.name}
               width={600}
-              height={400}
-              className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+              height={0}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="w-full h-auto group-hover:scale-105 transition-transform duration-500"
             />
           </div>
         ) : (
-          <div className="h-48 bg-gradient-to-br from-accent/15 via-purple-500/10 to-pink-500/5 flex items-center justify-center">
+          <div className="h-40 bg-gradient-to-br from-accent/15 via-purple-500/10 to-pink-500/5 flex items-center justify-center">
             <Icon size={32} className="text-accent/30" />
           </div>
         )}

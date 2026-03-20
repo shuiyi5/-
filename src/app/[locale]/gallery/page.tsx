@@ -53,7 +53,7 @@ export default async function GalleryPage({
     : allItems;
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-16">
+    <div className="max-w-7xl mx-auto px-6 py-16">
       <h1 className="text-3xl font-bold mb-2 gradient-text-subtle">
         {dict.gallery.title}
       </h1>
@@ -74,7 +74,7 @@ export default async function GalleryPage({
           {locale === "zh" ? "暂无作品" : "No works yet"}
         </p>
       ) : (
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+        <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
           {filteredItems.map((item, i) => (
             <ScrollReveal key={item.id} delay={i * 60}>
               <div className="break-inside-avoid">

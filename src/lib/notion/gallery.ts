@@ -100,7 +100,7 @@ const GALLERY_DATABASE_ID = process.env.NOTION_GALLERY_DB_ID || "";
 
 export { GALLERY_DATABASE_ID };
 
-export async function getNotionGallery(locale: Locale): Promise<GalleryItem[]> {
+export async function getNotionGallery(): Promise<GalleryItem[]> {
   if (!GALLERY_DATABASE_ID) return [];
 
   const response = await notion.databases.query({
@@ -109,6 +109,5 @@ export async function getNotionGallery(locale: Locale): Promise<GalleryItem[]> {
 
   return (response.results as PageObjectResponse[])
     .map(extractGalleryProps)
-    .filter((item) => item.language === locale)
     .sort((a, b) => a.order - b.order);
 }
