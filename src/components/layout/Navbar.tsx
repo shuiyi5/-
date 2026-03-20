@@ -35,7 +35,7 @@ export function Navbar({ locale, dict }: NavbarProps) {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:transition-all hover:after:w-full"
+              className="text-sm text-[var(--text-secondary)] hover:text-accent transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:transition-all hover:after:w-full"
             >
               {link.label}
             </Link>

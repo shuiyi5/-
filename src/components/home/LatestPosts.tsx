@@ -48,9 +48,9 @@ export async function LatestPosts({ locale, dict }: LatestPostsProps) {
                     i === 0 ? "md:flex md:items-center md:gap-8" : ""
                   }`}
                 >
-                  {/* Decorative gradient bar */}
+                  {/* Decorative gradient bar (sakura → lavender) */}
                   <div
-                    className={`rounded-full bg-gradient-to-r from-accent via-purple-500 to-pink-500 mb-4 ${
+                    className={`rounded-full bg-gradient-to-r from-pink-400 via-purple-300 to-sky-300 mb-4 ${
                       i === 0
                         ? "h-1 md:h-full md:w-1 md:mb-0 md:rounded-full md:min-h-[80px]"
                         : "h-0.5"

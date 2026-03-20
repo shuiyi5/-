@@ -5,6 +5,7 @@ import { siteConfig } from "@/lib/constants";
 import { Hero } from "@/components/home/Hero";
 import { LatestPosts } from "@/components/home/LatestPosts";
 import { FeaturedProjects } from "@/components/home/FeaturedProjects";
+import { AnimeEntrance } from "@/components/ui/AnimeEntrance";
 import type { Locale } from "@/lib/data/types";
 import { notFound } from "next/navigation";
 
@@ -57,8 +58,14 @@ export default async function HomePage({
   return (
     <>
       <Hero dict={dict} />
-      <LatestPosts locale={locale as Locale} dict={dict} />
-      <FeaturedProjects locale={locale as Locale} dict={dict} />
+      <div className="section-divider mx-auto max-w-5xl" />
+      <AnimeEntrance direction="up" delay={100}>
+        <LatestPosts locale={locale as Locale} dict={dict} />
+      </AnimeEntrance>
+      <div className="section-divider mx-auto max-w-5xl" />
+      <AnimeEntrance direction="up" delay={100}>
+        <FeaturedProjects locale={locale as Locale} dict={dict} />
+      </AnimeEntrance>
     </>
   );
 }

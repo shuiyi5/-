@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Quicksand } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { CursorTrail } from "@/components/ui/CursorTrail";
 import { FallingPetals } from "@/components/ui/FallingPetals";
+import { Live2DPet } from "@/components/ui/Live2DPet";
 import "./globals.css";
 
-const inter = Inter({
+const quicksand = Quicksand({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-quicksand",
   display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -26,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="zh" className={inter.variable} suppressHydrationWarning>
+    <html lang="zh" className={quicksand.variable} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -52,6 +54,7 @@ export default function RootLayout({
         <CursorTrail />
         <FallingPetals count={45} />
         {children}
+        <Live2DPet />
         <Analytics />
       </body>
     </html>

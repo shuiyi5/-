@@ -18,11 +18,12 @@ interface Petal {
 }
 
 const PETAL_COLORS = [
-  "rgba(255, 183, 197, ALPHA)", // light pink
-  "rgba(255, 154, 172, ALPHA)", // medium pink
-  "rgba(255, 200, 210, ALPHA)", // pale pink
-  "rgba(255, 130, 160, ALPHA)", // deeper pink
-  "rgba(255, 220, 230, ALPHA)", // very pale pink
+  "rgba(255, 183, 197, ALPHA)", // sakura pink
+  "rgba(255, 154, 172, ALPHA)", // medium sakura
+  "rgba(255, 200, 215, ALPHA)", // pale sakura
+  "rgba(248, 170, 200, ALPHA)", // warm sakura
+  "rgba(255, 220, 230, ALPHA)", // light sakura
+  "rgba(230, 180, 220, ALPHA)", // lavender hint
 ];
 
 export function FallingPetals({ count = 45 }: { count?: number }) {

@@ -17,7 +17,7 @@ export function Footer({ dict }: FooterProps) {
   return (
     <footer className="relative border-t border-[var(--glass-border)] py-16">
       {/* Subtle gradient top glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-pink-400/40 to-transparent" />
       <div className="max-w-5xl mx-auto px-6 flex flex-col items-center gap-5">
         <span className="text-sm font-bold gradient-text-subtle">Sentoe</span>
         <div className="flex items-center gap-3">

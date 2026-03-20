@@ -43,7 +43,7 @@ export async function FeaturedProjects({
             <ScrollReveal key={project.id} delay={i * 100}>
               <SpotlightCard className="glass-card gradient-border rounded-2xl p-5 group h-full">
                 {/* Gradient cover placeholder */}
-                <div className="h-24 rounded-xl mb-4 bg-gradient-to-br from-accent/15 via-purple-500/10 to-pink-500/5 flex items-center justify-center">
+                <div className="h-24 rounded-xl mb-4 bg-gradient-to-br from-pink-400/15 via-purple-300/10 to-sky-300/5 flex items-center justify-center">
                   <span className="text-3xl font-bold gradient-text opacity-30">
                     {project.name.charAt(0)}
                   </span>
