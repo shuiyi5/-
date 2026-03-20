@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { X, Copy, Check } from "lucide-react";
+import Image from "next/image";
 import type { GalleryItem } from "@/lib/data/types";
 
 interface LightboxProps {
@@ -156,17 +157,18 @@ function LightboxContent({ item, onClose }: LightboxProps) {
               </div>
             )}
 
-            {/* Reference thumbnail */}
+            {/* Reference thumbnail — uses next/image, hits Vercel cache from card */}
             {item.cover && (
               <div className="mt-6">
                 <h3 className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">
                   {item.language === "zh" ? "参考图" : "Reference"}
                 </h3>
                 <div className="flex gap-2">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src={item.cover}
                     alt="Ref"
+                    width={64}
+                    height={64}
                     className="w-16 h-16 rounded-lg object-cover border border-white/[0.08]"
                   />
                 </div>
