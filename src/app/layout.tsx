@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Quicksand } from "next/font/google";
+import { Quicksand, DM_Serif_Display } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { CursorTrail } from "@/components/ui/CursorTrail";
 import { FallingPetals } from "@/components/ui/FallingPetals";
@@ -11,6 +11,14 @@ const quicksand = Quicksand({
   variable: "--font-quicksand",
   display: "swap",
   weight: ["400", "500", "600", "700"],
+});
+
+const dmSerif = DM_Serif_Display({
+  subsets: ["latin"],
+  variable: "--font-dm-serif",
+  display: "swap",
+  weight: ["400"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -28,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="zh" className={quicksand.variable} suppressHydrationWarning>
+    <html lang="zh" className={`${quicksand.variable} ${dmSerif.variable}`} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{

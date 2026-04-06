@@ -4,39 +4,46 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-accent: #F472B6;
-  --color-accent-light: #F9A8D4;
-  --color-accent-dark: #EC4899;
+  --color-accent: #c43b1e;
+  --color-accent-light: #d4553a;
+  --color-accent-dark: #a32e15;
   --font-sans: "Quicksand", "Zen Maru Gothic", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
+  --font-serif: var(--font-dm-serif), "Georgia", serif;
 }
 
-/* ─── Theme Variables (Anime / 二次元) ─── */
+/* ─── Theme Variables (日系 Wabi-sabi) ─── */
 :root {
-  --bg: #FFF5F9;
-  --bg-secondary: #FFF0F5;
-  --text-primary: #2D1B33;
-  --text-secondary: #8B7390;
-  --border: #F5D5E0;
-  --glass-bg: rgba(255, 240, 248, 0.65);
-  --glass-border: rgba(244, 114, 182, 0.15);
-  --card-bg: rgba(255, 245, 250, 0.6);
-  --sakura: #FFB7C5;
-  --lavender: #C5B3E6;
-  --sky: #A5D8F5;
+  --bg: #f5f0e8;
+  --bg-secondary: #ede8df;
+  --text-primary: #1a1612;
+  --text-secondary: #6e6258;
+  --border: rgba(0, 0, 0, 0.08);
+  --glass-bg: rgba(245, 240, 232, 0.75);
+  --glass-border: rgba(196, 59, 30, 0.12);
+  --card-bg: rgba(255, 253, 248, 0.7);
+  /* wabi-sabi palette */
+  --washi: #f5f0e8;
+  --sumi: #1a1612;
+  --gold: #c8a96e;
+  --sage: #7a9e8e;
+  --indigo: #6a7fa8;
 }
 
 .dark {
-  --bg: #0D0A12;
-  --bg-secondary: #110E18;
-  --text-primary: #F5EEF8;
-  --text-secondary: #A89BB5;
-  --border: rgba(244, 114, 182, 0.1);
-  --glass-bg: rgba(13, 10, 18, 0.7);
-  --glass-border: rgba(244, 114, 182, 0.12);
-  --card-bg: rgba(20, 15, 30, 0.55);
-  --sakura: #FFB7C5;
-  --lavender: #C5B3E6;
-  --sky: #A5D8F5;
+  --bg: #131110;
+  --bg-secondary: #1b1815;
+  --text-primary: #ede7dc;
+  --text-secondary: #8c8070;
+  --border: rgba(255, 255, 255, 0.06);
+  --glass-bg: rgba(19, 17, 16, 0.8);
+  --glass-border: rgba(196, 59, 30, 0.15);
+  --card-bg: rgba(25, 22, 20, 0.6);
+  /* wabi-sabi palette */
+  --washi: #f5f0e8;
+  --sumi: #131110;
+  --gold: #c8a96e;
+  --sage: #7a9e8e;
+  --indigo: #6a7fa8;
 }
 
 body {
@@ -62,11 +69,11 @@ body {
 }
 
 .glass-card:hover {
-  border-color: rgba(244, 114, 182, 0.35);
+  border-color: rgba(196, 59, 30, 0.25);
   transform: translateY(-2px);
   box-shadow:
-    0 8px 32px rgba(244, 114, 182, 0.1),
-    0 0 0 1px rgba(244, 114, 182, 0.08);
+    0 8px 32px rgba(196, 59, 30, 0.08),
+    0 0 0 1px rgba(196, 59, 30, 0.06);
 }
 
 /* ─── Gradient Border Card ─── */
@@ -97,22 +104,22 @@ body {
 .gradient-border:hover::before {
   background: linear-gradient(
     135deg,
-    rgba(255, 183, 197, 0.5) 0%,
-    rgba(197, 179, 230, 0.4) 50%,
-    rgba(165, 216, 245, 0.3) 100%
+    rgba(196, 59, 30, 0.35) 0%,
+    rgba(200, 169, 110, 0.25) 50%,
+    rgba(122, 158, 142, 0.2) 100%
   );
 }
 
-/* ─── Gradient Text (Sakura → Lavender) ─── */
+/* ─── Gradient Text (朱 → 金茶 → 青磁) ─── */
 .gradient-text {
-  background: linear-gradient(135deg, #F472B6 0%, #C084FC 50%, #A5D8F5 100%);
+  background: linear-gradient(135deg, #c43b1e 0%, #c8a96e 50%, #7a9e8e 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-text-subtle {
-  background: linear-gradient(135deg, var(--text-primary) 0%, #F472B6 100%);
+  background: linear-gradient(135deg, var(--text-primary) 0%, #c43b1e 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -172,8 +179,8 @@ body {
   transition: opacity 0.4s;
   background: linear-gradient(
     135deg,
-    rgba(244, 114, 182, 0.12) 0%,
-    rgba(192, 132, 252, 0.08) 50%,
+    rgba(196, 59, 30, 0.1) 0%,
+    rgba(200, 169, 110, 0.06) 50%,
     transparent 100%
   );
   pointer-events: none;
@@ -194,30 +201,30 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(244, 114, 182, 0.25);
+  background: rgba(196, 59, 30, 0.2);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(244, 114, 182, 0.45);
+  background: rgba(196, 59, 30, 0.4);
 }
 
 /* ─── Typography Prose Dark ─── */
 .dark .prose {
-  --tw-prose-body: #d1d5db;
-  --tw-prose-headings: #F5EEF8;
-  --tw-prose-links: #F9A8D4;
-  --tw-prose-bold: #F5EEF8;
-  --tw-prose-code: #F5EEF8;
-  --tw-prose-pre-bg: #110E18;
-  --tw-prose-pre-code: #e5e7eb;
-  --tw-prose-quotes: #d1d5db;
-  --tw-prose-quote-borders: #F472B6;
-  --tw-prose-counters: #A89BB5;
-  --tw-prose-bullets: #8B7390;
-  --tw-prose-hr: rgba(244, 114, 182, 0.1);
-  --tw-prose-th-borders: #374151;
-  --tw-prose-td-borders: rgba(244, 114, 182, 0.08);
+  --tw-prose-body: #cec7bc;
+  --tw-prose-headings: #ede7dc;
+  --tw-prose-links: #d4553a;
+  --tw-prose-bold: #ede7dc;
+  --tw-prose-code: #ede7dc;
+  --tw-prose-pre-bg: #1b1815;
+  --tw-prose-pre-code: #cec7bc;
+  --tw-prose-quotes: #cec7bc;
+  --tw-prose-quote-borders: #c43b1e;
+  --tw-prose-counters: #8c8070;
+  --tw-prose-bullets: #6e6258;
+  --tw-prose-hr: rgba(196, 59, 30, 0.1);
+  --tw-prose-th-borders: #2e2a26;
+  --tw-prose-td-borders: rgba(196, 59, 30, 0.08);
 }
 
 /* ─── Noise Texture Overlay ─── */
@@ -260,15 +267,15 @@ body {
   transition: transform 0.1s;
 }
 
-/* Section divider — sakura wave */
+/* Section divider — 墨線 */
 .section-divider {
-  height: 2px;
+  height: 1px;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(244, 114, 182, 0.3) 20%,
-    rgba(192, 132, 252, 0.25) 50%,
-    rgba(165, 216, 245, 0.3) 80%,
+    rgba(196, 59, 30, 0.25) 20%,
+    rgba(200, 169, 110, 0.2) 50%,
+    rgba(122, 158, 142, 0.2) 80%,
     transparent 100%
   );
   border: none;
@@ -276,10 +283,114 @@ body {
 
 /* Soft glow pulse for accent elements */
 @keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 8px rgba(244, 114, 182, 0.15); }
-  50% { box-shadow: 0 0 20px rgba(244, 114, 182, 0.3); }
+  0%, 100% { box-shadow: 0 0 8px rgba(196, 59, 30, 0.12); }
+  50% { box-shadow: 0 0 20px rgba(196, 59, 30, 0.25); }
 }
 
 .glow-pulse {
   animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* ─── Grid Background ─── */
+.grid-bg {
+  position: relative;
+}
+.grid-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+.dark .grid-bg::before {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+}
+
+/* ─── Post card category color bars ─── */
+.post-card-bar {
+  position: relative;
+  overflow: hidden;
+}
+.post-card-bar::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  border-radius: 0 2px 2px 0;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.post-card-bar:hover::before { transform: scaleY(1); }
+.post-card-bar.cat-ai::before    { background: #c43b1e; }
+.post-card-bar.cat-product::before { background: #c8a96e; }
+.post-card-bar.cat-tech::before  { background: #7a9e8e; }
+.post-card-bar.cat-note::before  { background: #6a7fa8; }
+.post-card-bar.cat-default::before { background: var(--color-accent); }
+
+/* ─── Hero redesign (日系) ─── */
+.hero-headline {
+  font-family: var(--font-dm-serif), Georgia, serif;
+}
+.hero-gradient-text {
+  background: linear-gradient(135deg, #e05a3a 0%, #c8a96e 60%, #7a9e8e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-btn-primary {
+  background: #c43b1e;
+  box-shadow: 0 0 0 1px rgba(196,59,30,0.4), 0 4px 20px rgba(196,59,30,0.2);
+}
+.hero-btn-primary:hover {
+  background: #d4553a;
+  box-shadow: 0 0 0 1px rgba(196,59,30,0.6), 0 4px 28px rgba(196,59,30,0.35);
+}
+.hero-avatar-bg {
+  background: linear-gradient(135deg, rgba(196,59,30,0.08), rgba(200,169,110,0.06), rgba(122,158,142,0.08));
+}
+.hero-avatar-name {
+  font-family: var(--font-dm-serif), Georgia, serif;
+}
+/* Japanese corner bracket decoration for avatar */
+.hero-avatar-frame {
+  position: relative;
+}
+.hero-avatar-frame::before,
+.hero-avatar-frame::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: rgba(196,59,30,0.5);
+  border-style: solid;
+  transition: border-color 0.3s;
+}
+.hero-avatar-frame::before {
+  top: -4px; left: -4px;
+  border-width: 1px 0 0 1px;
+}
+.hero-avatar-frame::after {
+  bottom: -4px; right: -4px;
+  border-width: 0 1px 1px 0;
+}
+
+/* ─── Section title serif ─── */
+.section-title-serif {
+  font-family: var(--font-dm-serif), Georgia, serif;
+}
+
+/* ─── Dot pulse (status indicator) ─── */
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.75); }
+}
+.dot-pulse {
+  animation: dot-pulse 2s ease-in-out infinite;
 }

@@ -11,79 +11,116 @@ interface LatestPostsProps {
   dict: Dictionary;
 }
 
+const CAT_COLORS: Record<string, string> = {
+  "AI 产品分析": "cat-ai",
+  "AI Product Analysis": "cat-ai",
+  "行业洞察": "cat-product",
+  "Industry Insights": "cat-product",
+  "项目复盘": "cat-tech",
+  "Project Review": "cat-tech",
+  "读书笔记": "cat-note",
+  "Reading Notes": "cat-note",
+};
+
+const CAT_TEXT_COLORS: Record<string, string> = {
+  "cat-ai": "text-[#c43b1e]",
+  "cat-product": "text-[#c8a96e]",
+  "cat-tech": "text-[#7a9e8e]",
+  "cat-note": "text-[#6a7fa8]",
+  "cat-default": "text-accent",
+};
+
 export async function LatestPosts({ locale, dict }: LatestPostsProps) {
   const posts = await getLatestPosts(locale, 4);
 
   return (
-    <section className="py-20">
+    <section className="py-20" id="posts">
       <div className="max-w-5xl mx-auto px-6">
         <ScrollReveal>
-          <div className="flex items-center justify-between mb-10">
-            <h2 className="text-2xl md:text-3xl font-bold gradient-text-subtle">
+          <div className="flex items-baseline justify-between mb-10">
+            <h2 className="section-title-serif text-3xl tracking-tight text-[var(--text-primary)]">
               {dict.home.latestPosts}
+              <span className="text-(--text-secondary) text-2xl ml-3 font-normal">/ Writing</span>
             </h2>
             <Link
               href={`/${locale}/blog`}
-              className="text-sm text-accent hover:text-accent-light transition-colors flex items-center gap-1 group"
+              className="text-xs font-mono text-(--text-secondary) hover:text-(--text-primary) transition-colors flex items-center gap-1 group"
             >
               {dict.home.viewAll}
-              <ArrowRight
-                size={14}
-                className="group-hover:translate-x-0.5 transition-transform"
-              />
+              <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
             </Link>
           </div>
         </ScrollReveal>
 
-        {/* Bento-style grid: first post large, rest smaller */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {posts.map((post, i) => (
-            <ScrollReveal key={post.id} delay={i * 80}>
-              <Link
-                href={`/${locale}/blog/${post.slug}`}
-                className={`block group ${i === 0 ? "md:col-span-2" : ""}`}
-              >
-                <article
-                  className={`glass-card gradient-border rounded-2xl p-6 h-full ${
-                    i === 0 ? "md:flex md:items-center md:gap-8" : ""
-                  }`}
+        <div className="flex flex-col gap-px bg-[var(--border)] rounded-2xl overflow-hidden border border-[var(--border)]">
+          {posts.map((post, i) => {
+            const catClass = CAT_COLORS[post.category] ?? "cat-default";
+            const catTextClass = CAT_TEXT_COLORS[catClass] ?? "text-accent";
+            const isFeatured = i === 0;
+
+            return (
+              <ScrollReveal key={post.id} delay={i * 70}>
+                <Link
+                  href={`/${locale}/blog/${post.slug}`}
+                  className={`post-card-bar ${catClass} block bg-[var(--card-bg)] hover:bg-[var(--glass-bg)] transition-colors px-7 py-6 group`}
                 >
-                  {/* Decorative gradient bar (sakura → lavender) */}
-                  <div
-                    className={`rounded-full bg-gradient-to-r from-pink-400 via-purple-300 to-sky-300 mb-4 ${
-                      i === 0
-                        ? "h-1 md:h-full md:w-1 md:mb-0 md:rounded-full md:min-h-[80px]"
-                        : "h-0.5"
-                    }`}
-                  />
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <time className="text-xs text-[var(--text-secondary)]">
-                        {formatDate(post.date, locale)}
-                      </time>
-                      <span className="text-xs text-accent/80 px-2 py-0.5 rounded-full bg-accent/5 border border-accent/10">
-                        {post.category}
-                      </span>
-                      <span className="text-xs text-[var(--text-secondary)]">
-                        {calculateReadingTime(post.content, locale)}{" "}
-                        {dict.blog.minRead}
-                      </span>
+                  {isFeatured ? (
+                    /* Featured: two-column */
+                    <div className="grid grid-cols-1 md:grid-cols-[1fr_200px] gap-6 items-center">
+                      <div>
+                        <div className="flex items-center gap-2.5 mb-3">
+                          <span className={`text-[10px] font-semibold font-mono tracking-widest uppercase ${catTextClass}`}>
+                            {post.category}
+                          </span>
+                          <span className="w-1 h-1 rounded-full bg-[var(--text-secondary)]/30" />
+                          <time className="text-xs font-mono text-(--text-secondary)">
+                            {formatDate(post.date, locale)}
+                          </time>
+                          <span className="w-1 h-1 rounded-full bg-[var(--text-secondary)]/30" />
+                          <span className="text-xs font-mono text-(--text-secondary)">
+                            {calculateReadingTime(post.content, locale)} {dict.blog.minRead}
+                          </span>
+                        </div>
+                        <h3 className="section-title-serif text-xl md:text-2xl tracking-tight text-[var(--text-primary)] group-hover:text-accent transition-colors mb-2">
+                          {post.title}
+                        </h3>
+                        <p className="text-sm text-(--text-secondary) line-clamp-2 leading-relaxed">
+                          {post.summary}
+                        </p>
+                      </div>
+                      {/* Cover placeholder */}
+                      <div className="hidden md:flex aspect-video rounded-xl border border-[var(--border)] bg-[var(--bg-secondary)] items-center justify-center">
+                        <span className="text-xs font-mono text-(--text-secondary)/40">cover</span>
+                      </div>
                     </div>
-                    <h3
-                      className={`font-semibold group-hover:text-accent transition-colors ${
-                        i === 0 ? "text-xl md:text-2xl" : "text-base"
-                      }`}
-                    >
-                      {post.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-[var(--text-secondary)] line-clamp-2">
-                      {post.summary}
-                    </p>
-                  </div>
-                </article>
-              </Link>
-            </ScrollReveal>
-          ))}
+                  ) : (
+                    /* Regular */
+                    <div>
+                      <div className="flex items-center gap-2.5 mb-2">
+                        <span className={`text-[10px] font-semibold font-mono tracking-widest uppercase ${catTextClass}`}>
+                          {post.category}
+                        </span>
+                        <span className="w-1 h-1 rounded-full bg-[var(--text-secondary)]/30" />
+                        <time className="text-xs font-mono text-(--text-secondary)">
+                          {formatDate(post.date, locale)}
+                        </time>
+                        <span className="w-1 h-1 rounded-full bg-[var(--text-secondary)]/30" />
+                        <span className="text-xs font-mono text-(--text-secondary)">
+                          {calculateReadingTime(post.content, locale)} {dict.blog.minRead}
+                        </span>
+                      </div>
+                      <h3 className="text-base font-semibold text-[var(--text-primary)] group-hover:text-accent transition-colors mb-1">
+                        {post.title}
+                      </h3>
+                      <p className="text-sm text-(--text-secondary) line-clamp-1 leading-relaxed">
+                        {post.summary}
+                      </p>
+                    </div>
+                  )}
+                </Link>
+              </ScrollReveal>
+            );
+          })}
         </div>
       </div>
     </section>
