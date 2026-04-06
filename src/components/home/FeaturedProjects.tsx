@@ -161,7 +161,6 @@ export async function FeaturedProjects({ locale, dict }: FeaturedProjectsProps) 
                           rel="noopener noreferrer"
                           aria-label="GitHub"
                           className="w-6 h-6 rounded-md border border-(--border) bg-(--bg-secondary) flex items-center justify-center text-(--text-secondary) hover:text-accent hover:border-accent/30 transition-all duration-200"
-                          onClick={(e) => e.stopPropagation()}
                         >
                           <Github size={12} />
                         </a>
@@ -173,7 +172,6 @@ export async function FeaturedProjects({ locale, dict }: FeaturedProjectsProps) 
                           rel="noopener noreferrer"
                           aria-label="Demo"
                           className="w-6 h-6 rounded-md border border-(--border) bg-(--bg-secondary) flex items-center justify-center text-(--text-secondary) hover:text-accent hover:border-accent/30 transition-all duration-200"
-                          onClick={(e) => e.stopPropagation()}
                         >
                           <ExternalLink size={12} />
                         </a>
