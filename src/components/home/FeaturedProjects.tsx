@@ -161,22 +161,19 @@ export async function FeaturedProjects({ locale, dict }: FeaturedProjectsProps) 
                 </div>
               </>
             );
+            const href = project.slug
+              ? `/${locale}/projects/${project.slug}`
+              : `/${locale}/projects`;
             return (
               <ScrollReveal key={project.id} delay={i * 80}>
-                {project.slug ? (
-                  <Link
-                    href={`/${locale}/projects/${project.slug}`}
-                    className={`block h-full group transition-all duration-500 hover:-translate-y-1 ${theme.glow}`}
-                  >
-                    <SpotlightCard className={`glass-card rounded-2xl p-5 h-full flex flex-col`}>
-                      {cardInner}
-                    </SpotlightCard>
-                  </Link>
-                ) : (
-                  <SpotlightCard className={`glass-card rounded-2xl p-5 h-full flex flex-col group transition-all duration-500 hover:-translate-y-1 ${theme.glow}`}>
+                <Link
+                  href={href}
+                  className={`block h-full group transition-all duration-500 hover:-translate-y-1 ${theme.glow}`}
+                >
+                  <SpotlightCard className="glass-card rounded-2xl p-5 h-full flex flex-col">
                     {cardInner}
                   </SpotlightCard>
-                )}
+                </Link>
               </ScrollReveal>
             );
           })}

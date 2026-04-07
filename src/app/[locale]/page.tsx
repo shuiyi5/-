@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+
+export const dynamic = "force-dynamic";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { isValidLocale } from "@/lib/utils";
 import { siteConfig } from "@/lib/constants";
